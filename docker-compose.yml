@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: env-postgres
+    environment:
+      POSTGRES_DB: issue_reporter
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 9381Vikram
+      TZ: "Asia/Kolkata"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: env-app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8888:8888"
+    environment:
+      # IMPORTANT: use the postgres service name as host and the same DB/user/password
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/issue_reporter
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 9381Vikram
+      APP_JWT_SECRET: RIusg1V5eRlvDWyLQ38Q1iZGoMEEntdd55DkRSXrWjc=
+      JAVA_OPTS: "-Duser.timezone=Asia/Kolkata -Xms256m -Xmx512m"
+      SPRING_PROFILES_ACTIVE: prod
+    volumes:
+      - ./uploads:/app/uploads
+    restart: unless-stopped
+
+volumes:
+  pgdata:
