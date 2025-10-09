@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_DB: issue_reporter
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 9381Vikram
+      POSTGRES_PASSWORD: <REMOVED_SECRET>
       TZ: "Asia/Kolkata"
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -29,7 +29,7 @@ services:
       # IMPORTANT: use the postgres service name as host and the same DB/user/password
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/issue_reporter
       SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 9381Vikram
+      SPRING_DATASOURCE_PASSWORD: <REMOVED_SECRET>
       APP_JWT_SECRET: RIusg1V5eRlvDWyLQ38Q1iZGoMEEntdd55DkRSXrWjc=
       JAVA_OPTS: "-Duser.timezone=Asia/Kolkata -Xms256m -Xmx512m"
       SPRING_PROFILES_ACTIVE: prod
