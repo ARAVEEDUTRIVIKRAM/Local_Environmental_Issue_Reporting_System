@@ -1,0 +1,10 @@
+.landing-wrap{padding:48px 28px}
+.landing-hero{background:linear-gradient(135deg,#f7fbff,#eaf4ff);padding:36px;border-radius:14px;box-shadow:0 14px 40px rgba(43,140,255,.06);text-align:center}
+.landing-hero h1{font-size:32px;margin-bottom:8px}
+.landing-hero p{margin-bottom:16px;color:#556}
+.cta{display:flex;gap:10px;justify-content:center}
+.cta-btn{background:linear-gradient(90deg,#1e90ff,#6b6bff);color:white;padding:10px 18px;border-radius:10px;text-decoration:none}
+.cta-ghost{background:transparent;border:1px solid #e0e7ff;padding:10px 18px;border-radius:10px;text-decoration:none}
+.landing-cards{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.card{flex:1;min-width:200px;padding:18px;border-radius:12px;background:white;box-shadow:0 10px 30px rgba(0,0,0,.04);text-align:left}
+

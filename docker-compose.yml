@@ -1,11 +1,13 @@
+version: "3.8"
 services:
+
   postgres:
     image: postgres:15
     container_name: env-postgres
     environment:
       POSTGRES_DB: issue_reporter
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: <REMOVED_SECRET>
+      POSTGRES_PASSWORD: 9392Vikram
       TZ: "Asia/Kolkata"
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -24,15 +26,16 @@ services:
       postgres:
         condition: service_healthy
     ports:
-      - "8888:8888"
+      - "8080:8080"
     environment:
-      # IMPORTANT: use the postgres service name as host and the same DB/user/password
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/issue_reporter
       SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: <REMOVED_SECRET>
-      APP_JWT_SECRET: RIusg1V5eRlvDWyLQ38Q1iZGoMEEntdd55DkRSXrWjc=
-      JAVA_OPTS: "-Duser.timezone=Asia/Kolkata -Xms256m -Xmx512m"
+      SPRING_DATASOURCE_PASSWORD: 9392Vikram
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_PROFILES_ACTIVE: prod
+      APP_JWT_SECRET: RIusg1V5eRlvDWyLQ38Q1iZGoMEEntdd55DkRSXrWjc=
+      APP_JWT_EXPIRATION_MS: 86400000
+      JAVA_OPTS: "-Duser.timezone=Asia/Kolkata -Xms256m -Xmx512m"
     volumes:
       - ./uploads:/app/uploads
     restart: unless-stopped

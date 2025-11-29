@@ -1,56 +1,51 @@
 # ==============================
-# Node / React (frontend)
+# Node / React
 # ==============================
 node_modules/
 build/
-.env                  # Environment variables (DB credentials, JWT secrets, API keys)
+.env
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
-yarn.lock
 
 # ==============================
-# Java / Spring Boot (backend)
+# Java / Spring Boot
 # ==============================
 target/
 *.class
-*.jar
-*.war
-*.iml
 *.log
-.spring.log           # Spring Boot logs if present
 
 # ==============================
-# Database files
+# Uploads & database
 # ==============================
-*.h2.db              # Local H2 DB
-*.db                 # Local DB files (SQLite, etc.)
-*.sql                # Optional: local SQL dumps
-uploads/             # Uploaded files (user privacy)
+uploads/
+*.dump
+*.db
+*.h2.db
 
 # ==============================
-# IDE / Editor
+# IDE settings
 # ==============================
 .idea/
 .vscode/
 *.ipr
 *.iws
-*.classpath
-*.project
 
 # ==============================
-# OS generated files
+# OS junk
 # ==============================
 .DS_Store
 Thumbs.db
-ehthumbs.db
-*.swp
-*.swo
 
-# ==============================
-# Optional: Maven / Gradle
-# ==============================
-.mvn/
-.mvnw
-.mvnw.cmd
+
+# Eclipse / IDE garbage
+.classpath
+.factorypath
+.project
+.settings/
+
+# Database dumps
+*.sql
+*.dump
+
+

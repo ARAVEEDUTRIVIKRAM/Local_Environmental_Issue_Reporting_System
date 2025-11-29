@@ -1,60 +1,54 @@
 package com.environment.security;
 
 import io.jsonwebtoken.*;
+
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.security.Key;
-import java.util.Base64;
 import java.util.Date;
+import java.security.Key;
 
 @Component
 public class JwtUtil {
 
-    private final Key key;
-    private final long expirationMs;
+    @Value("${app.jwt.secret}")
+    private String jwtSecret;
 
-    public JwtUtil(@Value("${app.jwt.secret}") String base64Secret,
-                   @Value("${app.jwt.expiration-ms:86400000}") long expirationMs) {
-        if (base64Secret == null || base64Secret.isBlank()) {
-            throw new IllegalArgumentException("JWT secret must be provided via app.jwt.secret or APP_JWT_SECRET");
-        }
-        byte[] keyBytes = Base64.getDecoder().decode(base64Secret);
-        this.key = Keys.hmacShaKeyFor(keyBytes);
-        this.expirationMs = expirationMs;
+    @Value("${app.jwt.expiration-ms:86400000}")
+    private long jwtExpirationMs;
+
+    private Key key() {
+        return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
     public String generateToken(String username) {
         Date now = new Date();
-        Date exp = new Date(now.getTime() + expirationMs);
+        Date expiry = new Date(now.getTime() + jwtExpirationMs);
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(now)
-                .setExpiration(exp)
-                .signWith(key)
+                .setExpiration(expiry)
+                .signWith(key())
                 .compact();
+    }
+
+    public String getUsernameFromToken(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key())
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(token);
+            Jwts.parserBuilder().setSigningKey(key()).build().parseClaimsJws(token);
             return true;
-        } catch (JwtException | IllegalArgumentException ex) {
+        } catch (JwtException ex) {
             return false;
         }
-    }
-
-    public String getUsernameFromToken(String token) {
-        Claims claims = Jwts.parserBuilder()
-                            .setSigningKey(key)
-                            .build()
-                            .parseClaimsJws(token)
-                            .getBody();
-        return claims.getSubject();
     }
 }
 

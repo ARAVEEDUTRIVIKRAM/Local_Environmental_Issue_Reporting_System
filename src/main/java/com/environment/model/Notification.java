@@ -6,17 +6,14 @@ import lombok.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "notification")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Table(name = "notifications")
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Notification {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId;
-    @Column(length = 1000)
+
     private String message;
-    private Instant timestamp;
+    private Instant createdAt;
+    private Long userId;
     private boolean readFlag;
 }

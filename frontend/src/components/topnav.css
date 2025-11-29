@@ -1,0 +1,14 @@
+.topnav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 22px;background:linear-gradient(90deg,#2b8cff,#6b6bff);
+  color:white;box-shadow:0 6px 18px rgba(43,140,255,.18);position:sticky;top:0;z-index:50;
+}
+.brand{display:flex;gap:10px;align-items:center;color:white;text-decoration:none;font-weight:700}
+.brand-logo{width:36px;height:36px;border-radius:6px;background:#fff;padding:4px}
+.topnav-right{display:flex;gap:10px;align-items:center}
+.btn{background:#fff;color:#0b57d0;padding:8px 12px;border-radius:8px;border:none;cursor:pointer}
+.btn.small{font-size:14px;padding:6px 10px}
+.btn.outline{background:transparent;color:white;border:1px solid rgba(255,255,255,.2)}
+.btn.danger{background:#ff5b5b;color:white}
+.hello{color:white;margin-left:8px;margin-right:8px}
+

@@ -1,63 +1,71 @@
 package com.environment.controller;
 
-import com.environment.model.Role;
 
+import org.springframework.security.core.Authentication;
+
+import com.environment.dto.AuthRequest;
+import com.environment.dto.AuthResponse;
 import com.environment.model.User;
 import com.environment.repository.UserRepository;
 import com.environment.security.JwtUtil;
-import lombok.Data;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
+import com.environment.model.Role;
+
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.*;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.Authentication; 
-import org.springframework.security.core.AuthenticationException;
-
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthenticationManager authenticationManager;
-    private final UserRepository userRepo;
-    private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authManager;
     private final JwtUtil jwtUtil;
+    private final UserRepository userRepo;
+    private final PasswordEncoder encoder;
 
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepo, PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
-        this.authenticationManager = authenticationManager;
-        this.userRepo = userRepo;
-        this.passwordEncoder = passwordEncoder;
-        this.jwtUtil = jwtUtil;
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@RequestBody @Valid AuthRequest req) {
+
+        Authentication auth = authManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        req.getUsername(), req.getPassword()
+                )
+        );
+
+        User user = userRepo.findByUsername(req.getUsername())
+                .orElseThrow();
+
+        String token = jwtUtil.generateToken(user.getUsername());
+
+        return ResponseEntity.ok(
+                new AuthResponse(token, user.getRole().name(), user.getFullName())
+        );
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest req) {
-        if (userRepo.existsByUsername(req.getUsername())) {
+    public ResponseEntity<?> register(@RequestBody @Valid AuthRequest req) {
+
+        if (userRepo.findByUsername(req.getUsername()).isPresent()) {
             return ResponseEntity.badRequest().body("Username already exists");
         }
+
         User u = User.builder()
                 .username(req.getUsername())
-                .password(passwordEncoder.encode(req.getPassword()))
-                .name(req.getName())
-                .email(req.getEmail())
-                .roles(Set.of(Role.ROLE_CITIZEN))
+                .password(encoder.encode(req.getPassword()))
+                .role(Role.CITIZEN)
+                .fullName(req.getUsername())
+                .email("")
                 .build();
+
         userRepo.save(u);
-        return ResponseEntity.ok("User registered");
-    }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest req) {
-        Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(req.getUsername(), req.getPassword()));
-        String token = jwtUtil.generateToken(req.getUsername());
-        return ResponseEntity.ok(new LoginResponse(token));
+        return ResponseEntity.ok("User created");
     }
-
-    @Data
-    static class RegisterRequest { private String username, password, name, email; }
-    @Data
-    static class LoginRequest { private String username, password; }
-    @Data
-    static class LoginResponse { private final String token; }
 }

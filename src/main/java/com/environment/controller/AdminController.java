@@ -1,26 +1,38 @@
 package com.environment.controller;
 
-import com.environment.repository.IssueRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.Map;
+import com.environment.model.Issue;
+import com.environment.model.User;
+import com.environment.service.AdminService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin")
+@RequiredArgsConstructor
 public class AdminController {
-    private final IssueRepository issueRepository;
 
-    public AdminController(IssueRepository issueRepository) {
-        this.issueRepository = issueRepository;
+    private final AdminService service;
+
+    @GetMapping("/users")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<User>> listUsers() {
+        return ResponseEntity.ok(service.listUsers());
     }
 
-    @GetMapping("/stats")
-    public Map<String, Object> stats() {
-        long total = issueRepository.count();
-        long reported = issueRepository.findByStatus("REPORTED").size();
-        long inProgress = issueRepository.findByStatus("IN_PROGRESS").size();
-        long resolved = issueRepository.findByStatus("RESOLVED").size();
-        return Map.of("total", total, "reported", reported, "inProgress", inProgress, "resolved", resolved);
+    @GetMapping("/issues")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<List<Issue>> allIssues() {
+        return ResponseEntity.ok(service.allIssues());
+    }
+
+    @PutMapping("/issues/{id}/status")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Issue> updateStatus(
+            @PathVariable Long id,
+            @RequestParam String status) {
+        return ResponseEntity.ok(service.updateStatus(id, status));
     }
 }
