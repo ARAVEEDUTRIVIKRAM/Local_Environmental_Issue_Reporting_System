@@ -1,8 +1,7 @@
-// frontend/src/api/axiosClient.js
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:8080",   // backend in Docker
+  baseURL: process.env.REACT_APP_API_URL,   // backend in Docker
 });
 
 // Attach token automatically for every request
