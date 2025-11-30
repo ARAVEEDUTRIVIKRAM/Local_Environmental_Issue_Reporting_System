@@ -13,7 +13,7 @@ public class CorsConfig {
 
         cfg.setAllowCredentials(true);
 
-        cfg.addAllowedOrigin("https://env-issue-reporter.vercel.app");
+        cfg.addAllowedOrigin("https://env-issue-reporter-system.vercel.app/");
         cfg.addAllowedOrigin("http://localhost:3000"); // keep for dev
 
         cfg.addAllowedHeader("*");
