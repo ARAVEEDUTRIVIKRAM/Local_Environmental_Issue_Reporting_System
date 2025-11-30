@@ -1,10 +1,9 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  baseURL: process.env.REACT_APP_API_URL || "https://env-issue-backend.onrender.com"
 });
 
-// Attach token automatically for every request
 instance.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
@@ -14,3 +13,4 @@ instance.interceptors.request.use((config) => {
 });
 
 export default instance;
+
