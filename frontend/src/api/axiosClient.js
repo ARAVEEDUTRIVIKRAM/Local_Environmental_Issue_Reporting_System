@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,   // backend in Docker
+  baseURL: process.env.REACT_APP_API_URL
 });
 
 // Attach token automatically for every request
