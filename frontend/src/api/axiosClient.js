@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const baseURL = process.env.REACT_APP_API_URL || "https://env-issue-backend.onrender.com";
+
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "https://env-issue-backend.onrender.com"
+  baseURL,
 });
 
 instance.interceptors.request.use((config) => {
@@ -13,4 +15,3 @@ instance.interceptors.request.use((config) => {
 });
 
 export default instance;
-
