@@ -57,15 +57,25 @@ public class SecurityConfig {
     // Open-ish CORS for local dev. Lock down in prod.
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
+
         CorsConfiguration cfg = new CorsConfiguration();
-        cfg.setAllowedOrigins(List.of("*")); // during dev allow all origins; change for production
-        cfg.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
-        cfg.setAllowedHeaders(List.of("*"));
+
         cfg.setAllowCredentials(true);
+        cfg.setAllowedOrigins(List.of(
+            "https://env-issue-reporter-system.vercel.app",
+            "http://localhost:3000"
+        ));
+
+        cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        cfg.setAllowedHeaders(List.of("*"));
+        cfg.setExposedHeaders(List.of("Authorization"));
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", cfg);
+
         return source;
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
