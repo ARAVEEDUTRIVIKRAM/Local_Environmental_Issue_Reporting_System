@@ -1,11 +1,5 @@
-import { api } from "../utils/api";
+import api from "../api/axiosClient";
 
-export async function login(username, password) {
+export async function loginApi({ username, password }) {
   return api.post("/api/auth/login", { username, password });
-}
-
-export function logout() {
-  localStorage.removeItem("token");
-  localStorage.removeItem("role");
-  localStorage.removeItem("name");
 }
