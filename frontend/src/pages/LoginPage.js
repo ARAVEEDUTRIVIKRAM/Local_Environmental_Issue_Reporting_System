@@ -32,6 +32,24 @@ export default function LoginPage() {
       >
         <Card style={{ width: 420 }} className="p-3 neon-card">
           <h4 className="neon-title">Sign in</h4>
+
+          {/* --- DEMO CREDENTIALS BOX --- */}
+          <div
+            style={{
+              background: "#222",
+              padding: "10px",
+              borderRadius: "6px",
+              color: "#ffc107",
+              marginBottom: "15px",
+              fontSize: "0.9rem",
+            }}
+          >
+            <strong>Demo Accounts:</strong>
+            <br /> Admin → <b>admin / admin123</b>
+            <br /> Official → <b>official / official123</b>
+            <br /> Citizen → <b>citizen / citizen123</b>
+          </div>
+
           <Form onSubmit={submit}>
             <Form.Group className="mb-2">
               <Form.Control
@@ -57,3 +75,4 @@ export default function LoginPage() {
     </>
   );
 }
+
