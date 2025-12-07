@@ -62,7 +62,7 @@ public class SecurityConfig {
 
         cfg.setAllowCredentials(true);
         cfg.setAllowedOrigins(List.of(
-            "https://env-issue-reporter-system.vercel.app",
+            "https://local-environmental-issue-reporting.vercel.app",
             "http://localhost:3000"
         ));
 
