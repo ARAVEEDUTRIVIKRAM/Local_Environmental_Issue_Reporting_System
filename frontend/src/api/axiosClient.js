@@ -1,15 +1,12 @@
 import axios from "axios";
 
-const baseURL = process.env.REACT_APP_API_URL;
+const baseURL = process.env.REACT_APP_API_URL || "https://env-issue-backend.onrender.com";
 
-console.log("API BASE URL:", baseURL);   
-
-const instance = axios.create({
+const api = axios.create({
   baseURL,
 });
 
-// Attach token
-instance.interceptors.request.use((config) => {
+api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -17,4 +14,4 @@ instance.interceptors.request.use((config) => {
   return config;
 });
 
-export default instance;
+export default api;
