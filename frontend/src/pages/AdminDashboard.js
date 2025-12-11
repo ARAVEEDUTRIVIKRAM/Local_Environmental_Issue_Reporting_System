@@ -3,6 +3,8 @@ import axios from "../api/axiosClient";
 import TopNav from "../components/TopNav";
 import { Container, Table, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
+import MapPreview from "../components/MapPreview";
+
 
 export default function AdminDashboard() {
   const [issues, setIssues] = useState([]);
@@ -31,6 +33,11 @@ export default function AdminDashboard() {
       <TopNav />
       <Container className="mt-4">
         <h3 className="neon-title">Admin - Issues</h3>
+        <div className="mt-4 mb-4">
+          <h4 className="neon-title">Issues Map Overview</h4>
+          <MapPreview issues={issues} />
+        </div>
+
         <Table striped hover className="neon-card">
           <thead>
             <tr><th>Title</th><th>Status</th><th>Actions</th></tr>

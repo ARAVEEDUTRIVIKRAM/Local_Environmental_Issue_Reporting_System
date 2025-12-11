@@ -7,5 +7,6 @@ public class IssueDto {
     private String title;
     private String description;
     private String location;
-    private String imagePath; // optional
+    private String imagePath; 
+    private Long userId;      
 }

@@ -5,6 +5,8 @@ import TopNav from "../components/TopNav";
 import { Container, Card, Spinner } from "react-bootstrap";
 import StatusBadge from "../components/StatusBadge";
 import { toast } from "react-toastify";
+import MapPicker from "../components/MapPicker"; // add at top
+
 
 export default function IssueDetail() {
   const { id } = useParams();
@@ -71,6 +73,21 @@ export default function IssueDetail() {
               </p>
 
               <p>{issue.description}</p>
+              
+              {issue.location && (
+                <div className="mt-4">
+                  <h5 className="neon-title">Issue Location</h5>
+                  <MapPicker
+                    lat={parseFloat(issue.location.split(",")[0])}
+                    lng={parseFloat(issue.location.split(",")[1])}
+                    readOnly={true}
+                   />
+                </div>
+               )}
+
+              
+
+
 
               <p className="muted">
                 Reported by: {issue.reportedBy || "anonymous"}

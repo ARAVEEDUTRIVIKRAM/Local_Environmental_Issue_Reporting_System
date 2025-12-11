@@ -12,14 +12,30 @@ export default function LandingPage() {
       <Container className="mt-5">
         <Row className="align-items-center">
           <Col md={6}>
-            <motion.h1 className="neon-h1" initial={{ x:-20, opacity:0 }} animate={{ x:0, opacity:1 }}>Make your neighborhood shine</motion.h1>
+            <motion.h1 className="neon-h1" initial={{ x:-20, opacity:0 }} animate={{ x:0, opacity:1 }}>
+              Make your neighborhood shine
+            </motion.h1>
+
             <motion.p initial={{ x:-20, opacity:0 }} animate={{ x:0, opacity:1 }} transition={{ delay:.1 }}>
               Report environmental issues, track progress in real-time, and power community-driven change.
             </motion.p>
-            <Button variant="warning" onClick={() => nav("/register")}>Get Started</Button>
+
+            <Button variant="warning" onClick={() => nav("/register")}>
+              Get Started
+            </Button>
+
+            {/* ✔ Fixed button */}
+            <button onClick={() => nav("/login")}>
+              Get Started
+            </button>
+
           </Col>
+
           <Col md={6}>
-            <motion.img src="/assets/hero-neon.png" alt="hero" initial={{ scale:.9 }} animate={{ scale:1 }} className="w-100 float-anim"/>
+            <motion.img src="/assets/hero-neon.png" alt="hero" 
+              initial={{ scale:.9 }} animate={{ scale:1 }} 
+              className="w-100 float-anim"
+            />
           </Col>
         </Row>
 
@@ -31,7 +47,9 @@ export default function LandingPage() {
           ].map((f,i) => (
             <Col md={4} key={i}>
               <motion.div whileHover={{ y:-6 }} className="feature-card p-3 neon-card">
-                <img src={f.img} alt={f.title} style={{ width:"100%", height:140, objectFit:"cover", borderRadius:8 }} />
+                <img src={f.img} alt={f.title}
+                  style={{ width:"100%", height:140, objectFit:"cover", borderRadius:8 }}
+                />
                 <h5 className="neon-title mt-2">{f.title}</h5>
                 <p className="muted">{f.desc}</p>
               </motion.div>
@@ -42,3 +60,4 @@ export default function LandingPage() {
     </>
   );
 }
+
