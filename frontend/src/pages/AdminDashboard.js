@@ -3,6 +3,8 @@ import axios from "../api/axiosClient";
 import TopNav from "../components/TopNav";
 import { Container, Table, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
+import MapPreview from "../components/MapPreview";
+
 
 export default function AdminDashboard() {
   const [issues, setIssues] = useState([]);
@@ -31,15 +33,42 @@ export default function AdminDashboard() {
       <TopNav />
       <Container className="mt-4">
         <h3 className="neon-title">Admin - Issues</h3>
+        <div className="mt-4 mb-4">
+          <h4 className="neon-title">Issues Map Overview</h4>
+          <MapPreview issues={issues} />
+        </div>
+
         <Table striped hover className="neon-card">
           <thead>
-            <tr><th>Title</th><th>Status</th><th>Actions</th></tr>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Severity</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
           </thead>
           <tbody>
             {issues.map(i => (
               <tr key={i.id}>
                 <td>{i.title}</td>
+
+                {/* CATEGORY */}
+                <td>
+                  {i.description?.startsWith("[")
+                  ? i.description.split("|")[0].replace("[", "").trim()
+                  : ""}
+                </td>
+
+                {/* SEVERITY */}
+                <td>
+                  {i.description?.startsWith("[")
+                  ? i.description.split("|")[1].replace("]", "").trim()
+                  : ""}
+                </td>
+
                 <td>{i.status}</td>
+
                 <td>
                   <Button size="sm"
                     onClick={() => change(i.id, "IN_PROGRESS")}
@@ -51,7 +80,8 @@ export default function AdminDashboard() {
                     Resolve
                   </Button>
                 </td>
-              </tr>
+             </tr>
+
             ))}
           </tbody>
         </Table>

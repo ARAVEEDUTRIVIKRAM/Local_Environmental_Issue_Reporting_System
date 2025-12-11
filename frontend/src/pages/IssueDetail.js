@@ -5,6 +5,8 @@ import TopNav from "../components/TopNav";
 import { Container, Card, Spinner } from "react-bootstrap";
 import StatusBadge from "../components/StatusBadge";
 import { toast } from "react-toastify";
+import MapPicker from "../components/MapPicker"; // add at top
+
 
 export default function IssueDetail() {
   const { id } = useParams();
@@ -69,8 +71,50 @@ export default function IssueDetail() {
               <p className="muted mt-2">
                 {new Date(issue.createdAt).toLocaleString()}
               </p>
+              
+              <div className="mb-2">
 
-              <p>{issue.description}</p>
+                {/* CATEGORY + SEVERITY */}
+                {issue.description?.startsWith("[") && (
+                  <h5 className="neon-title">
+                    {issue.description.split("]")[0].replace("[", "")}
+                  </h5>
+                 )}
+
+                 {/* SUGGESTED ACTION */}
+                 {issue.description?.includes("Suggested Action:") && (
+                   <p className="fw-bold text-warning">
+                     {issue.description.split("\n")[1]}
+                   </p>
+                  )}
+
+                  {/* MAIN DESCRIPTION */}
+                  <p>
+                    {issue.description
+                      ?.split("\n")
+                      .slice(2)
+                      .join("\n")}
+                  </p>
+
+              </div>
+
+
+
+              
+              {issue.location && (
+                <div className="mt-4">
+                  <h5 className="neon-title">Issue Location</h5>
+                  <MapPicker
+                    lat={parseFloat(issue.location.split(",")[0])}
+                    lng={parseFloat(issue.location.split(",")[1])}
+                    readOnly={true}
+                   />
+                </div>
+               )}
+
+              
+
+
 
               <p className="muted">
                 Reported by: {issue.reportedBy || "anonymous"}
