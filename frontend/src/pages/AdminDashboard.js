@@ -40,13 +40,35 @@ export default function AdminDashboard() {
 
         <Table striped hover className="neon-card">
           <thead>
-            <tr><th>Title</th><th>Status</th><th>Actions</th></tr>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Severity</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
           </thead>
           <tbody>
             {issues.map(i => (
               <tr key={i.id}>
                 <td>{i.title}</td>
+
+                {/* CATEGORY */}
+                <td>
+                  {i.description?.startsWith("[")
+                  ? i.description.split("|")[0].replace("[", "").trim()
+                  : ""}
+                </td>
+
+                {/* SEVERITY */}
+                <td>
+                  {i.description?.startsWith("[")
+                  ? i.description.split("|")[1].replace("]", "").trim()
+                  : ""}
+                </td>
+
                 <td>{i.status}</td>
+
                 <td>
                   <Button size="sm"
                     onClick={() => change(i.id, "IN_PROGRESS")}
@@ -58,7 +80,8 @@ export default function AdminDashboard() {
                     Resolve
                   </Button>
                 </td>
-              </tr>
+             </tr>
+
             ))}
           </tbody>
         </Table>

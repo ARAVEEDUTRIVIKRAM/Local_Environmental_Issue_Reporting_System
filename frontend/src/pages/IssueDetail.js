@@ -71,8 +71,35 @@ export default function IssueDetail() {
               <p className="muted mt-2">
                 {new Date(issue.createdAt).toLocaleString()}
               </p>
+              
+              <div className="mb-2">
 
-              <p>{issue.description}</p>
+                {/* CATEGORY + SEVERITY */}
+                {issue.description?.startsWith("[") && (
+                  <h5 className="neon-title">
+                    {issue.description.split("]")[0].replace("[", "")}
+                  </h5>
+                 )}
+
+                 {/* SUGGESTED ACTION */}
+                 {issue.description?.includes("Suggested Action:") && (
+                   <p className="fw-bold text-warning">
+                     {issue.description.split("\n")[1]}
+                   </p>
+                  )}
+
+                  {/* MAIN DESCRIPTION */}
+                  <p>
+                    {issue.description
+                      ?.split("\n")
+                      .slice(2)
+                      .join("\n")}
+                  </p>
+
+              </div>
+
+
+
               
               {issue.location && (
                 <div className="mt-4">

@@ -38,7 +38,7 @@ export default function ReportIssuePage() {
 
     await createIssueApi({
       title: form.title,
-      description: form.description,
+      description: `[${form.category} | ${form.severity}]\nSuggested Action: ${form.suggestedAction}\n\n${form.description}`,
       imagePath,
       location: coords.lat && coords.lng ? `${coords.lat}, ${coords.lng}` : "",
     });
