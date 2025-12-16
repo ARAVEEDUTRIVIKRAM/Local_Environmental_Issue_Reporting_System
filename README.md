@@ -1,53 +1,168 @@
-🌍 Local Environmental Issue Reporting App
+# 🌍 Local Environmental Issue Reporting System
 
-📌 Overview
-The Local Environmental Issue Reporting App is a full-stack web application that allows citizens to report local environmental issues (like garbage dumping, water leakage, illegal constructions, etc.).
-Users can register, log in, submit complaints with details and images, and view their submitted issues.
-The main goal of this project is to create a community-driven platform that helps local authorities track and resolve environmental problems efficiently.
+## Problem Statement
 
-🚀 Features
-✅ User Registration & Login (Authentication system)
-✅ Submit new complaints with title, description, location
-✅ View complaints in a structured table format
-✅ Dark/Light mode theme toggle
-✅ Responsive UI with modern design (React + Tailwind)
-✅ Backend API with Spring Boot for handling complaints and authentication
-✅ RESTful endpoints for easy integration
+Local environmental issues such as garbage dumping, water leakage, drainage problems, and illegal constructions often go unreported or unresolved due to the lack of a simple, transparent reporting mechanism. Existing processes are fragmented, slow, and provide little visibility to citizens once a complaint is raised.
 
-🛠️ Tech Stack
+This project addresses that gap by providing a **centralized, web-based platform** where users can report environmental issues, track their submissions, and view reported issues in a structured and accessible way.
 
-Frontend: React.js, Tailwind CSS, Axios
-Backend: Spring Boot, Java, Spring Web, Spring Data JPA, MySQL
-Database: MySQL
-Other Tools: Maven (for build), Git/GitHub (for version control)
+---
 
-## 📸 Screenshots  
+## 🧠 System Overview
 
-<img width="1920" height="1019" alt="Screenshot (1784)" src="https://github.com/user-attachments/assets/02e4cf66-22b7-4c87-8a95-60f25ef8e62a" />
+The Local Environmental Issue Reporting System is a **full-stack web application** built using **React.js** on the frontend and **Spring Boot REST APIs** on the backend.
 
-<img width="1920" height="1019" alt="Screenshot (1785)" src="https://github.com/user-attachments/assets/e47b6a88-2cee-4ee9-9fdd-ca31b1fcf673" />
+The application enables authenticated users to:
 
-<img width="1920" height="1015" alt="Screenshot (1786)" src="https://github.com/user-attachments/assets/b664f299-b995-4bbf-aceb-3866f0d6209a" />
+* Register and log in securely
+* Submit environmental issue reports with relevant details
+* View and track previously submitted issues
 
-<img width="1920" height="1019" alt="Screenshot (1787)" src="https://github.com/user-attachments/assets/ff39f90c-de89-4fd2-988e-96bf65799db4" />
+The system is designed with a clear separation between frontend presentation, backend business logic, and database persistence.
 
-<img width="1920" height="1019" alt="Screenshot (1788)" src="https://github.com/user-attachments/assets/e72f1917-81c6-451b-9e7f-8effb5e890b5" />
+---
 
-<img width="1920" height="1020" alt="Screenshot (1789)" src="https://github.com/user-attachments/assets/e5fa14c6-6344-4ac1-bfe6-41b06e2db6ed" />
+## 🏗️ Architecture
 
-<img width="1920" height="1017" alt="Screenshot (1790)" src="https://github.com/user-attachments/assets/3551f0fe-87c7-411f-968c-35e4fccb7556" />
+### Frontend
 
-<img width="1920" height="1022" alt="Screenshot (1791)" src="https://github.com/user-attachments/assets/fd10fe7f-e670-475e-8ce5-e74ab4757d34" />
+* Built using **React.js** with a component-based architecture
+* Uses **Axios** for API communication
+* Implements responsive UI using **Tailwind CSS**
+* Supports **Dark / Light mode** for better accessibility
+* Handles form validation and user feedback
 
-<img width="1920" height="1019" alt="Screenshot (1792)" src="https://github.com/user-attachments/assets/55bc8e8e-1d26-4763-9326-2ffb2db1cf35" />
+### Backend
 
-<img width="1920" height="1017" alt="Screenshot (1793)" src="https://github.com/user-attachments/assets/a7142160-67ab-4ab8-b3ce-a3dccc40245b" />
+* Developed using **Spring Boot** following REST principles
+* Layered architecture:
 
+  * Controller layer for request handling
+  * Service layer for business logic
+  * Repository layer using Spring Data JPA
+* Authentication endpoints for user registration and login
+* RESTful APIs for complaint submission and retrieval
 
+### Database
 
+* **MySQL** database for storing user data and complaint records
+* JPA/Hibernate used for ORM and database interaction
 
+---
 
+## 🛠️ Tech Stack
 
+**Frontend**
+
+* React.js
+* Tailwind CSS
+* Axios
+
+**Backend**
+
+* Java
+* Spring Boot
+* Spring Web
+* Spring Data JPA
+
+**Database**
+
+* MySQL
+
+**Tools & Build**
+
+* Maven
+* Git & GitHub
+
+**Deployment**
+
+* Frontend: Vercel
+* Backend: Hosted separately (Spring Boot API)
+
+---
+
+## 🚀 Core Features
+
+* User registration and login (authentication system)
+* Submit new environmental issues with title, description, and location
+* View submitted issues in a structured tabular format
+* Responsive UI with modern design
+* Dark / Light mode toggle
+* RESTful backend APIs for easy frontend integration
+
+---
+
+## 🔁 Application Flow
+
+1. User registers or logs in through the frontend
+2. Authentication request is sent to the backend API
+3. Upon successful authentication, the user can submit new issue reports
+4. Backend validates request data and persists issue details in the database
+5. User can view previously submitted issues through API-driven data retrieval
+
+---
+
+## 🧪 Testing & Validation
+
+The application was manually tested using:
+
+* Browser-based testing for UI and user flows
+* API testing via frontend integration
+
+### Validated Scenarios:
+
+* User registration and login with valid and invalid credentials
+* Form validation for empty or incorrect inputs
+* Successful and failed issue submissions
+* Retrieval of reported issues
+* UI responsiveness across screen sizes
+
+---
+
+## ⚠️ Edge Cases Considered
+
+* Submitting complaints without authentication
+* Missing or invalid request fields
+* Empty issue lists for new users
+* UI behavior on slow or failed API responses
+
+---
+
+## 🌐 Live Demo
+
+🔗 [https://local-environmental-issue-reporting.vercel.app/](https://local-environmental-issue-reporting.vercel.app/)
+
+---
+
+## 📸 Screenshots
+
+*(Screenshots are included below to demonstrate the user interface and application flow.)*
+
+---
+
+## 📌 Known Limitations
+
+* No role-based access control (admin vs user)
+* No automated unit or integration test suite
+* Limited status tracking for reported issues
+* Backend deployment scalability not optimized for production-scale usage
+
+---
+
+## 🔮 Future Improvements
+
+* Add issue status lifecycle (Open, In Progress, Resolved)
+* Implement role-based access (Admin dashboard)
+* Add automated testing (JUnit / Integration tests)
+* Improve issue categorization and filtering
+* Add notification system for issue updates
+
+---
+
+## 👨‍💻 Author
+
+**Araveedu Trivikram**
+GitHub: [https://github.com/ARAVEEDUTRIVIKRAM](https://github.com/ARAVEEDUTRIVIKRAM)
 
 
 
