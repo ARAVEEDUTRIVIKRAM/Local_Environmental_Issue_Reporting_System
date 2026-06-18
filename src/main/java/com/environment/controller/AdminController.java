@@ -9,6 +9,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+
+// This Class belongs to the AdminController
 @RestController
 @RequestMapping("/api/admin")
 @RequiredArgsConstructor
