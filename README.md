@@ -85,63 +85,61 @@ https://github.com/ARAVEEDUTRIVIKRAM/Local_Environmental_Issue_Reporting_System
 
 # Project Architecture
 
+```text
 React Frontend
-↓
-
+        │
+        ▼
 REST APIs
-
-↓
-
+        │
+        ▼
 Spring Boot Backend
-
-↓
-
+        │
+        ▼
 Spring Security
-
-↓
-
+        │
+        ▼
 JWT Authentication
-
-↓
-
+        │
+        ▼
 Service Layer
-
-↓
-
+        │
+        ▼
 Repository Layer
-
-↓
-
+        │
+        ▼
 PostgreSQL Database
+```
 
 
 # 10. Folder Structure
 
-src
+Local_Environmental_Issue_Reporting_System
 
-├── controller
-
-├── service
-
-├── repository
-
-├── model
-
-├── dto
-
-├── security
-
-├── config
-
-├── exception
-
-├── util
-
-└── resources
-
-└── db
-
-        └── migration
+├── frontend
+│
+├── src
+│   └── main
+│       ├── java
+│       │   └── com
+│       │       └── environment
+│       │           ├── config
+│       │           ├── controller
+│       │           ├── dto
+│       │           ├── exception
+│       │           ├── model
+│       │           ├── repository
+│       │           ├── security
+│       │           ├── service
+│       │           └── util
+│       │
+│       └── resources
+│           ├── application.properties
+│           └── db
+│               └── migration
+│
+├── Dockerfile
+├── docker-compose.yml
+└── pom.xml
 
 # Database Migration
 
@@ -174,43 +172,40 @@ Protected REST Endpoints
 
 # Role Permissions
 
-Instead of paragraphs.
-
-  Citizen	          Official	            Admin
-Report Issue  	        Resolve Issue	          Manage Users
-Upload Image   	        Change Status	          Analytics
-View Issues	        Update Issues	          Full Access
+Citizen	        Official	Admin
+Report Issues	Update Status	Full System Access
+Upload Images	Resolve Issues	Manage Users
+Track Issues	Review Reports	Analytics Dashboard
 
 # REST APIs
 
-Authentication APIs
-
-Issue APIs
-
-Admin APIs
-
-Official APIs
-
-Upload APIs
-
-Notification APIs
+Module	                 Sample Endpoints
+Authentication	         /auth/login, /auth/register
+Issues	                 /issues, /issues/{id}
+Admin	                 /admin/**
+Official	         /official/**
+Upload	                 /upload/**
+Notifications	         /notifications/**
 
 # Screenshots
 
 
 # Installation
 
-git clone
+```bash
+git clone https://github.com/ARAVEEDUTRIVIKRAM/Local_Environmental_Issue_Reporting_System.git
 
-cd project
+cd Local_Environmental_Issue_Reporting_System
 
+# Backend
 mvn clean install
+mvn spring-boot:run
 
-docker compose up
-
-Run Spring Boot
-
-Run React
+# Frontend
+cd frontend
+npm install
+npm run dev
+```
 
 
 # Future Enhancements
