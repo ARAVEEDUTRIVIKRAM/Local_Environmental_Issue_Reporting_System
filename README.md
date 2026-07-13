@@ -143,11 +143,11 @@ src
 
         └── migration
 
-# 11. Database Migration
+# Database Migration
 
 Mention Flyway.
 
-```md
+
 ## Database Versioning
 
 Flyway is used for database version control.
@@ -177,9 +177,9 @@ Protected REST Endpoints
 Instead of paragraphs.
 
   Citizen	          Official	            Admin
-Report Issue  	  Resolve Issue	        Manage Users
-Upload Image   	 Change Status	        Analytics
-View Issues	     Update Issues	        Full Access
+Report Issue  	        Resolve Issue	          Manage Users
+Upload Image   	        Change Status	          Analytics
+View Issues	        Update Issues	          Full Access
 
 # REST APIs
 
