@@ -114,7 +114,7 @@ PostgreSQL Database
 # 10. Folder Structure
 
 Local_Environmental_Issue_Reporting_System
-
+│
 ├── frontend
 │
 ├── src
@@ -131,7 +131,7 @@ Local_Environmental_Issue_Reporting_System
 │       │           ├── security
 │       │           ├── service
 │       │           └── util
-│       │
+│
 │       └── resources
 │           ├── application.properties
 │           └── db
@@ -140,10 +140,6 @@ Local_Environmental_Issue_Reporting_System
 ├── Dockerfile
 ├── docker-compose.yml
 └── pom.xml
-
-# Database Migration
-
-Mention Flyway.
 
 
 ## Database Versioning
@@ -158,34 +154,32 @@ Each schema update is managed through versioned SQL scripts ensuring reproducibl
 
 ## Security
 
-JWT Authentication
-
-Spring Security
-
-Role-Based Authorization
-
-Stateless Session Management
-
-Password Encryption
-
-Protected REST Endpoints
+- JWT Authentication
+- Spring Security
+- Role-Based Authorization
+- Stateless Session Management
+- Password Encryption
+- Protected REST Endpoints
 
 # Role Permissions
 
-Citizen	        Official	Admin
-Report Issues	Update Status	Full System Access
-Upload Images	Resolve Issues	Manage Users
-Track Issues	Review Reports	Analytics Dashboard
+| Citizen | Official | Admin |
+|-------|----------|----------|
+| Report Issues | Update Status | Full System Access |
+| Upload Images | Resolve Issues | Manage Users |
+| Track Issues | Review Reports | Analytics Dashboard |
+
 
 # REST APIs
 
-Module	                 Sample Endpoints
-Authentication	         /auth/login, /auth/register
-Issues	                 /issues, /issues/{id}
-Admin	                 /admin/**
-Official	         /official/**
-Upload	                 /upload/**
-Notifications	         /notifications/**
+| Module |	          | Sample Endpoints |
+| ------------ |          | ----------------------- |
+| Authentication |	  | /auth/login, /auth/register |
+| Issues |	          | /issues, /issues/{id} |
+| Admin	|                 | /admin/** |
+| Official |	          | /official/** |
+| Upload |	          | /upload/** |
+| Notifications |	  | /notifications/** |
 
 # Screenshots
 
