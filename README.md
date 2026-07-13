@@ -111,7 +111,7 @@ PostgreSQL Database
 ```
 
 
-# 10. Folder Structure
+# Folder Structure
 
 ```text
 Local_Environmental_Issue_Reporting_System
