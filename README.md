@@ -113,10 +113,10 @@ PostgreSQL Database
 
 # 10. Folder Structure
 
+```text
 Local_Environmental_Issue_Reporting_System
 │
 ├── frontend
-│
 ├── src
 │   └── main
 │       ├── java
@@ -140,6 +140,7 @@ Local_Environmental_Issue_Reporting_System
 ├── Dockerfile
 ├── docker-compose.yml
 └── pom.xml
+```
 
 
 ## Database Versioning
@@ -172,14 +173,15 @@ Each schema update is managed through versioned SQL scripts ensuring reproducibl
 
 # REST APIs
 
-| Module |	          | Sample Endpoints |
-| ------------ |          | ----------------------- |
-| Authentication |	  | /auth/login, /auth/register |
-| Issues |	          | /issues, /issues/{id} |
-| Admin	|                 | /admin/** |
-| Official |	          | /official/** |
-| Upload |	          | /upload/** |
-| Notifications |	  | /notifications/** |
+| Module | Sample Endpoints |
+|---------|------------------|
+| Authentication | `/auth/login`, `/auth/register` |
+| Issues | `/issues`, `/issues/{id}` |
+| Admin | `/admin/**` |
+| Official | `/official/**` |
+| Upload | `/upload/**` |
+| Notifications | `/notifications/**` |
+
 
 # Screenshots
 
