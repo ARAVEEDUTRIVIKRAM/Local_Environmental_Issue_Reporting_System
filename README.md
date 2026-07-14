@@ -188,18 +188,25 @@ Each schema update is managed through versioned SQL scripts ensuring reproducibl
 1. Landing Page
 <img width="1920" height="871" alt="LandingPage" src="https://github.com/user-attachments/assets/29a5ee23-22c4-4973-b644-8e7039ee89ba" />
 
+2. Login Page
 <img width="1920" height="872" alt="LoginPage" src="https://github.com/user-attachments/assets/2c1b5a6e-ff40-418b-8078-9e6113fe2271" />
 
+3. Citizen Dashboard
 <img width="1920" height="878" alt="CitizenDashboard" src="https://github.com/user-attachments/assets/74b8dba1-013d-437a-bf52-c76e7e7418f9" />
 
+4. Report Issue
 <img width="1920" height="871" alt="ReportIssue " src="https://github.com/user-attachments/assets/d415a368-6e5f-4209-b867-6314d175d182" />
 
+5. Issue List
 <img width="1920" height="841" alt="IssueList" src="https://github.com/user-attachments/assets/f112753e-ac50-436c-8cbd-b397845e08c9" />
 
+6. Official DashBoard
 <img width="1920" height="869" alt="OfficialDashBoard" src="https://github.com/user-attachments/assets/ac1500dd-d37c-4392-a927-4a5b6dbeeb3a" />
 
+7. Admin DashBoard
 <img width="1920" height="859" alt="AdminDashBoard" src="https://github.com/user-attachments/assets/1d341499-c6b0-4081-bc14-d2ebfee23859" />
 
+8. Charts
 <img width="1920" height="805" alt="Charts" src="https://github.com/user-attachments/assets/d503c4a9-4cae-4769-84c9-859545b7d8cf" />
 
 
