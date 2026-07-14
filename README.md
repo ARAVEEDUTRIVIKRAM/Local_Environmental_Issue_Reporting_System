@@ -199,7 +199,7 @@ Each schema update is managed through versioned SQL scripts ensuring reproducibl
 
 <img width="1920" height="1080" alt="AdminDashBoard" src="https://github.com/user-attachments/assets/708ed8ab-b66a-40fe-8659-e1acf16b08b5" />
 
-<img width="1920" height="1080" alt="Charts" src="https://github.com/user-attachments/assets/6e4d9935-42fa-477a-95d9-37cbbe8102d9" />
+<img width="1920" height="805" alt="Charts" src="https://github.com/user-attachments/assets/d503c4a9-4cae-4769-84c9-859545b7d8cf" />
 
 
 # Installation
