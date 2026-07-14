@@ -7,10 +7,10 @@ Built using Spring Boot, React, PostgreSQL, JWT Authentication, Role-Based Acces
 
 ## 🚀 Live Demo
 
-Live URL: 
+**Live Demo**
 https://local-environmental-issue-reporting.vercel.app
 
-GitHub Repository:
+**GitHub Repository**
 https://github.com/ARAVEEDUTRIVIKRAM/Local_Environmental_Issue_Reporting_System
 
 
@@ -185,6 +185,7 @@ Each schema update is managed through versioned SQL scripts ensuring reproducibl
 
 # Screenshots
 
+1. Landing Page
 <img width="1920" height="871" alt="LandingPage" src="https://github.com/user-attachments/assets/29a5ee23-22c4-4973-b644-8e7039ee89ba" />
 
 <img width="1920" height="872" alt="LoginPage" src="https://github.com/user-attachments/assets/2c1b5a6e-ff40-418b-8078-9e6113fe2271" />
@@ -222,19 +223,13 @@ npm run dev
 
 # Future Enhancements
 
-Google Maps
-
-Email Notifications
-
-AI Issue Detection
-
-Push Notifications
-
-Mobile App
-
-Location Tracking
-
-Cloud Storage
+- Google Maps Integration
+- Email Notifications
+- AI-based Issue Detection
+- Push Notifications
+- Mobile Application
+- Real-time Location Tracking
+- Cloud Image Storage
 
 # Author
 
