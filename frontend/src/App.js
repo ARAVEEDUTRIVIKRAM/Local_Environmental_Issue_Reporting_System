@@ -18,8 +18,6 @@ import api from "./api/axiosClient";
 
 export default function App() {
 
-  // Wake up the Render backend as soon as the frontend loads.
-  // This helps reduce the wait when the user later tries to log in.
   useEffect(() => {
     const warmUpBackend = async () => {
       try {
