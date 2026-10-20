@@ -28,7 +28,20 @@ export default function LoginPage() {
       nav("/dashboard");
     } catch (err) {
       console.error("Login error", err.response || err);
-      toast.error("Invalid credentials");
+      const status = err.response?.status;
+      const serverMessage = err.response?.data?.message;
+
+      if (status === 401 || status === 400) {
+        toast.error(serverMessage || "Invalid username or password");
+      } else if (status === 503) {
+        toast.error(serverMessage || "Database temporarily unavailable. Please try again shortly.");
+      } else if (err.code === "ECONNABORTED") {
+        toast.error("The server is taking too long to respond. Wait a moment and try once more.");
+      } else if (!err.response) {
+        toast.error("Cannot reach the server right now. It may be waking up; please try again shortly.");
+      } else {
+        toast.error("Login failed because of a server error. Please try again shortly.");
+      }
     } finally {
       setLoading(false);
     }
