@@ -59,7 +59,9 @@ public class DataLoader implements ApplicationRunner {
     ) {
         log.info("Checking demo account: {}", username);
 
-        if (userRepo.findByUsername(username).isEmpty()) {
+        var existingUser = userRepo.findByUsername(username);
+
+        if (existingUser.isEmpty()) {
             User user = User.builder()
                     .username(username)
                     .password(encoder.encode(password))
@@ -69,10 +71,20 @@ public class DataLoader implements ApplicationRunner {
                     .build();
 
             userRepo.save(user);
-
             log.info("Created demo account: {}", username);
+            return;
+        }
+
+        // Demo credentials are documented in the public login page. Existing rows
+        // may have an older or mismatched password hash, so verify and repair only
+        // the demo account password instead of assuming that row existence is enough.
+        User user = existingUser.get();
+        if (!encoder.matches(password, user.getPassword())) {
+            user.setPassword(encoder.encode(password));
+            userRepo.save(user);
+            log.warn("Reset password hash for demo account: {}", username);
         } else {
-            log.info("Demo account already exists: {}", username);
+            log.info("Demo account already exists with the expected password: {}", username);
         }
     }
 }
